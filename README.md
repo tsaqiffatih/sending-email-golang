@@ -1,18 +1,25 @@
 # Email Notification System
 
-A simple Go application for sending email notifications using SMTP. This application demonstrates how to structure an email with HTML content and securely handle sensitive information using a `.env` file.
+A simple Go application for sending email notifications using SMTP, leveraging the `gomail` library. This application demonstrates how to structure an email with HTML content and securely handle sensitive information using a `.env` file.
 
 ## Features
 
 - Sends HTML-formatted emails.
 - Supports SMTP configuration.
-- Uses `.env` for secure and flexible configuration.
+- Utilizes `.env` for secure and flexible configuration.
+- Easy-to-use with the `gomail` library.
 
 ## Prerequisites
 
 - Go 1.18 or later
 - An SMTP server (e.g., Gmail SMTP)
+- `gomail` library for sending emails:
+
+  ```
+  go get gopkg.in/gomail.v2
+  ```
 - `godotenv` library for loading `.env` files:
+
   ```
   go get github.com/joho/godotenv
   ```
@@ -21,8 +28,8 @@ A simple Go application for sending email notifications using SMTP. This applica
 
 1. Clone the repository:
    ```
-   git clone https://github.com/your-username/email-notification-system.git
-   cd email-notification-system
+   git clone https://github.com/tsaqiffatih/sending-email-golang.git
+   cd sending-email-golang
    ```
 
 2. Install dependencies:
@@ -31,15 +38,14 @@ A simple Go application for sending email notifications using SMTP. This applica
    ```
 
 3. Create a `.env` file:
-   Copy the provided `.env.example` file and update it with your own SMTP configuration.
+   Copy the provided `.env.example` file and update it with your SMTP configuration.
 
    ```
    cp .env.example .env
    ```
 
    Update the values in `.env`:
-
-   ```
+   ```plaintext
    SMTP_EMAIL=your-email@example.com
    SMTP_PASSWORD=your-email-password
    SMTP_HOST=smtp.example.com
@@ -59,11 +65,11 @@ If configured correctly, the program will send an email to the recipient specifi
 ## Project Structure
 
 ```
+├── main.go           # The main application logic
 ├── .env              # Your environment variables (ignored by Git)
 ├── .env.example      # Example environment variables for reference
 ├── go.mod            # Go module file
 ├── go.sum            # Go dependencies file
-├── main.go           # The main application logic
 └── README.md         # Project documentation
 ```
 
@@ -81,8 +87,10 @@ The following environment variables are required:
 
 ## Notes
 
-- **Security**: Avoid hardcoding sensitive credentials in the codebase. Use `.env` for this purpose.
+- **Security**: Ensure sensitive credentials (like `.env`) are never pushed to GitHub by adding them to `.gitignore`.
 - **Gmail Users**: If using Gmail, ensure that "Allow less secure apps" is enabled or use an App Password if 2FA is enabled.
+- **gomail**: The library simplifies email handling and supports attachments if needed.
+
 
 ## License
 
@@ -90,9 +98,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgements
 
+- [gomail](https://github.com/go-gomail/gomail) for email sending functionality.
 - [godotenv](https://github.com/joho/godotenv) for managing environment variables.
 - [Gmail SMTP](https://support.google.com/mail/answer/7126229) for email delivery.
-
----
-
-**Happy coding!**
